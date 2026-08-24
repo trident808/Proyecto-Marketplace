@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace Local</title>
+  <meta name="description" content="Marketplace multivendedor de comercio electrónico para emprendimientos locales, con pasarela de pagos integrada y gestión de inventario en tiempo real.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="contenedor header-top">
+      <a class="logo" href="#hero">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l1.5-4h15L21 8M3 8h18M3 8l1 11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1l1-11M8 11a2 2 0 1 1-4 0M12 11a2 2 0 1 1-4 0M16 11a2 2 0 1 1-4 0M20 11a2 2 0 1 1-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Marketplace <em>Local</em>
+      </a>
+      <form class="buscador-global" role="search" id="form-busqueda-global">
+        <label for="busqueda-global">Buscar productos</label>
+        <input type="search" id="busqueda-global" name="q" placeholder="Buscar café, cerámica, mochilas…">
+        <button type="submit" aria-label="Buscar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+      <div class="header-acciones">
+        <button class="boton-icono" id="btn-abrir-carrito" aria-label="Abrir carrito de compras" aria-haspopup="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 6l-1-3H2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
+          <span class="contador-badge" id="contador-carrito">0</span>
+        </button>
+        <button class="btn-hamburguesa" id="btn-menu" aria-expanded="false" aria-controls="nav-categorias" aria-label="Abrir menú de categorías">
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-categorias" id="nav-categorias" aria-label="Categorías principales">
+      <div class="contenedor">
+        <ul>
+          <li><a href="#catalogo" aria-current="page">Ofertas del día</a></li>
+          <li><a href="#catalogo">Nuevos</a></li>
+          <li><a href="#catalogo">Más vendidos</a></li>
+          <li><a href="#estado-pedido">Mis pedidos</a></li>
+          <li><a href="#wishlist">Lista de deseos</a></li>
+          <li><a href="#cuentas">Vender en Marketplace Local</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="franja-toldo" aria-hidden="true"></div>
+
+  <main id="contenido-principal">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="contenedor">
+        <div class="hero-texto">
+          <p class="etiqueta-eyebrow" style="color:var(--mustard)">Emprendimientos locales · Colombia</p>
+          <h1>El mercado de tu barrio, <i>ahora en línea.</i></h1>
+          <p>Compra directo a microempresarios y emprendimientos locales: café de finca, artesanías, moda y mucho más. Pago seguro, inventario actualizado en tiempo real y envío rastreado en cada pedido.</p>
+          <div class="hero-cta">
+            <a href="#catalogo" class="boton boton-secundario">Explorar catálogo</a>
+            <a href="#cuentas" class="boton boton-fantasma">Abrir mi tienda</a>
+          </div>
+          <div class="hero-stats">
+            <div class="dato"><strong id="stat-tiendas">128</strong><span>tiendas activas</span></div>
+            <div class="dato"><strong id="stat-productos">940+</strong><span>productos publicados</span></div>
+            <div class="dato"><strong>4.8★</strong><span>calificación promedio</span></div>
+          </div>
+        </div>
+        <picture class="hero-picture">
+          <source media="(min-width: 768px)" srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 460'%3E%3Crect width='1000' height='460' fill='rgb(30,86,74)'/%3E%3Cg opacity='0.9'%3E%3Crect x='0' y='330' width='1000' height='130' fill='rgb(20,58,50)'/%3E%3Ccircle cx='150' cy='190' r='95' fill='rgb(227,165,66)'/%3E%3Ccircle cx='150' cy='190' r='95' fill='none' stroke='rgb(18,56,48)' stroke-width='6'/%3E%3Crect x='330' y='120' width='150' height='190' rx='14' fill='rgb(193,67,46)'/%3E%3Crect x='510' y='90' width='170' height='220' rx='14' fill='rgb(246,241,227)'/%3E%3Ccircle cx='595' cy='170' r='40' fill='rgb(30,86,74)'/%3E%3Crect x='710' y='150' width='210' height='160' rx='14' fill='rgb(200,132,36)'/%3E%3Cpath d='M0 330 L1000 330' stroke='rgb(246,241,227)' stroke-width='4' stroke-dasharray='2 22'/%3E%3C/g%3E%3C/svg%3E">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 520'%3E%3Crect width='640' height='520' fill='rgb(30,86,74)'/%3E%3Crect x='0' y='400' width='640' height='120' fill='rgb(20,58,50)'/%3E%3Ccircle cx='320' cy='210' r='120' fill='rgb(227,165,66)'/%3E%3Crect x='120' y='300' width='150' height='150' rx='16' fill='rgb(193,67,46)'/%3E%3Crect x='370' y='300' width='150' height='150' rx='16' fill='rgb(246,241,227)'/%3E%3C/svg%3E" alt="Ilustración de un mercado local" width="640" height="520" loading="eager">
+        </picture>
+      </div>
+    </section>
+
+    <!-- CUENTAS -->
+    <section class="seccion" id="cuentas">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-01 · RF-02</p>
+          <h2>Crea tu cuenta</h2>
+          <p>Regístrate como comprador o como tienda para publicar productos.</p>
+        </div>
+        <form class="tarjeta-cuentas" id="form-registro" novalidate>
+          <fieldset class="selector-rol" style="border:none;padding:0;margin:0;">
+            <legend class="oculto-visualmente">Tipo de cuenta</legend>
+            <label>
+              <input type="radio" name="rol" value="comprador" checked>
+              <span><strong>Comprador</strong><span>Compra productos de varias tiendas locales.</span></span>
+            </label>
+            <label>
+              <input type="radio" name="rol" value="vendedor" id="radio-vendedor">
+              <span><strong>Tienda / vendedor</strong><span>Publica productos y gestiona tus ventas.</span></span>
+            </label>
+          </fieldset>
+          <div class="campos-formulario">
+            <div class="campo">
+              <label for="reg-nombre">Nombre completo</label>
+              <input type="text" id="reg-nombre" name="nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="campo">
+              <label for="reg-email">Correo electrónico</label>
+              <input type="email" id="reg-email" name="email" required placeholder="tucorreo@ejemplo.com">
+            </div>
+            <div class="campo">
+              <label for="reg-clave">Contraseña</label>
+              <input type="password" id="reg-clave" name="clave" required minlength="8" placeholder="Mínimo 8 caracteres">
+            </div>
+            <div class="campo">
+              <label for="reg-tel">Teléfono de contacto</label>
+              <input type="tel" id="reg-tel" name="telefono" required pattern="[0-9]{10}" placeholder="3001234567">
+            </div>
+          </div>
+          <div class="campos-tienda" id="campos-tienda">
+            <p class="etiqueta-eyebrow" style="color:var(--mustard)">Perfil de tienda</p>
+            <div class="campos-formulario">
+              <div class="campo">
+                <label for="tienda-nombre">Nombre comercial</label>
+                <input type="text" id="tienda-nombre" name="tienda-nombre" placeholder="Ej. Finca Tierra Alta">
+              </div>
+              <div class="campo">
+                <label for="tienda-logo">Logo de la tienda</label>
+                <input type="file" id="tienda-logo" name="tienda-logo" accept="image/png, image/jpeg, image/svg+xml">
+              </div>
+              <div class="campo" style="grid-column:1/-1;">
+                <label for="tienda-desc">Descripción de la tienda</label>
+                <textarea id="tienda-desc" name="tienda-desc" rows="3" placeholder="Cuéntale a tus clientes qué haces."></textarea>
+              </div>
+            </div>
+          </div>
+          <label style="display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;color:rgba(246,241,227,.75);">
+            <input type="checkbox" required style="margin-top:.2rem;">
+            Autorizo el tratamiento de mis datos personales (Ley 1581 de 2012).
+          </label>
+          <div>
+            <button type="submit" class="boton boton-secundario">Crear cuenta</button>
+          </div>
+          <p id="mensaje-registro" role="status" style="font-size:.85rem;color:var(--mustard);"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="seccion" id="catalogo" style="padding-top:0;">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-04 · RF-05</p>
+          <h2>Catálogo multivendedor</h2>
+          <p>Busca, filtra y arma un solo carrito con productos de tiendas distintas.</p>
+        </div>
+        <button class="boton boton-linea filtros-toggle" id="btn-toggle-filtros" aria-expanded="false" aria-controls="filtros-aside">Filtros</button>
+        <div class="layout-catalogo">
+          <aside class="filtros-aside" id="filtros-aside" aria-label="Filtros de catálogo">
+            <h2>Filtrar productos</h2>
+            <form id="form-filtros">
+              <div class="grupo-filtro">
+                <span>Categoría</span>
+                <select id="filtro-categoria">
+                  <option value="">Todas las categorías</option>
+                  <option value="Alimentos y bebidas">Alimentos y bebidas</option>
+                  <option value="Artesanías">Artesanías</option>
+                  <option value="Moda y accesorios">Moda y accesorios</option>
+                  <option value="Hogar">Hogar</option>
+                  <option value="Belleza natural">Belleza natural</option>
+                </select>
+              </div>
+              <div class="grupo-filtro">
+                <span>Rango de precio (COP)</span>
+                <div class="rango-precio">
+                  <input type="number" id="filtro-precio-min" min="0" step="1000" placeholder="Mín.">
+                  <span>–</span>
+                  <input type="number" id="filtro-precio-max" min="0" step="1000" placeholder="Máx.">
+                </div>
+              </div>
+              <div class="grupo-filtro">
+                <span>Calificación mínima</span>
+                <select id="filtro-calificacion">
+                  <option value="0">Cualquiera</option>
+                  <option value="4">4★ o más</option>
+                  <option value="4.5">4.5★ o más</option>
+                  <option value="4.8">4.8★ o más</option>
+                </select>
+              </div>
+              <div class="grupo-filtro">
+                <span>Disponibilidad</span>
+                <label><input type="checkbox" id="filtro-disponible"> Solo con stock disponible</label>
+              </div>
+              <div class="filtros-acciones">
+                <button type="submit" class="boton boton-secundario" style="flex:1;">Aplicar</button>
+                <button type="reset" class="boton boton-linea" id="btn-limpiar-filtros">Limpiar</button>
+              </div>
+            </form>
+          </aside>
+          <div>
+            <div class="catalogo-cabecera">
+              <h3 style="margin:0;font-size:1.05rem;">Ofertas del día</h3>
+              <span class="catalogo-resultado" id="contador-resultados">8 productos</span>
+            </div>
+            <div class="catalogo" id="catalogo-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FICHA PRODUCTO -->
+    <section class="seccion" id="ficha-producto" style="padding-top:0;">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-03 · RF-10</p>
+          <h2>Ficha de producto</h2>
+          <p>Vista de detalle: descripción completa, tienda vendedora y reseñas.</p>
+        </div>
+        <article class="ficha-producto">
+          <figure class="ficha-imagen">
+            <img id="ficha-imagen-svg" src="" alt="" width="600" height="600">
+          </figure>
+          <div>
+            <span class="ficha-tienda" id="ficha-tienda">Finca Tierra Alta · Huila</span>
+            <h1 class="ficha-nombre" id="ficha-nombre">Café orgánico Tierra Alta 500g</h1>
+            <p class="producto-rating" id="ficha-rating">★★★★★ 4.8 (132 reseñas)</p>
+            <p id="ficha-descripcion">Café de origen único, cultivado a 1.800 msnm y tostado en pequeños lotes.</p>
+            <p class="ficha-precio" id="ficha-precio">$38.000</p>
+            <form id="form-agregar-detalle">
+              <div class="ficha-cantidad">
+                <label for="ficha-cantidad-input">Cantidad</label>
+                <input type="number" id="ficha-cantidad-input" min="1" max="10" value="1">
+                <span class="producto-stock" id="ficha-stock">24 unidades disponibles</span>
+              </div>
+              <button type="submit" class="boton boton-primario btn-agregar-carrito" data-producto-id="1" style="width:auto;">Agregar al carrito</button>
+            </form>
+            <div class="resenas">
+              <h4>Reseñas de compradores</h4>
+              <div class="resena">
+                <div class="resena-cabecera"><strong>Marcela R.</strong><span>★★★★★</span></div>
+                <p style="margin:0;">Llegó fresco y bien empacado. El sabor es increíble.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section class="seccion" id="checkout" style="padding-top:0;">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-06 · RF-07</p>
+          <h2>Checkout</h2>
+          <p>Subtotal, envío y total se calculan automáticamente.</p>
+        </div>
+        <div class="checkout-grid">
+          <form class="tarjeta" id="form-checkout" novalidate>
+            <h3 style="font-size:1.05rem;">Datos de entrega</h3>
+            <div class="campos-formulario">
+              <div class="campo">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+              </div>
+              <div class="campo">
+                <label for="tel">Teléfono de contacto</label>
+                <input type="tel" id="tel" name="tel" required pattern="[0-9]{10}" placeholder="3001234567">
+              </div>
+              <div class="campo campo-ancho">
+                <label for="direccion">Dirección de entrega</label>
+                <input type="text" id="direccion" name="direccion" required minlength="10" placeholder="Calle, número, barrio, ciudad">
+              </div>
+            </div>
+            <h3 style="font-size:1.05rem;margin-top:1.4rem;">Método de pago</h3>
+            <fieldset class="metodo-pago" style="border:none;padding:0;">
+              <legend class="oculto-visualmente">Método de pago</legend>
+              <label><input type="radio" name="metodo-pago" value="tarjeta" checked> Tarjeta crédito/débito</label>
+              <label><input type="radio" name="metodo-pago" value="pse"> PSE</label>
+            </fieldset>
+            <button type="submit" class="boton boton-primario" style="width:100%;margin-top:.6rem;">Confirmar pedido</button>
+            <p id="mensaje-checkout" role="status" style="font-size:.85rem;color:var(--brick);margin-top:.6rem;"></p>
+          </form>
+          <div class="tarjeta resumen-pedido">
+            <h3 style="font-size:1.05rem;">Resumen del pedido</h3>
+            <div class="fila-resumen"><span>Subtotal</span><span id="resumen-subtotal">$0</span></div>
+            <div class="fila-resumen"><span>Envío</span><span id="resumen-envio">$8.000</span></div>
+            <div class="fila-resumen total"><span>Total</span><span id="resumen-total">$8.000</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTADO DEL PEDIDO / INVENTARIO -->
+    <section class="seccion" id="estado-pedido" style="padding-top:0;">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-08 · RF-09</p>
+          <h2>Estado del pedido e inventario</h2>
+        </div>
+        <div class="tarjeta">
+          <ol class="stepper-pedido" id="stepper-pedido">
+            <li class="paso-pedido activo" data-estado="pendiente"><span class="punto">1</span><span class="texto">Pendiente</span></li>
+            <li class="paso-pedido" data-estado="pagado"><span class="punto">2</span><span class="texto">Pagado</span></li>
+            <li class="paso-pedido" data-estado="preparacion"><span class="punto">3</span><span class="texto">En preparación</span></li>
+            <li class="paso-pedido" data-estado="enviado"><span class="punto">4</span><span class="texto">Enviado</span></li>
+            <li class="paso-pedido" data-estado="entregado"><span class="punto">5</span><span class="texto">Entregado</span></li>
+          </ol>
+          <p id="nota-estado-pedido">Aún no has confirmado ningún pedido.</p>
+        </div>
+        <h3 style="margin-top:2.2rem;font-size:1rem;">Inventario en tiempo real</h3>
+        <div class="inventario-lista" id="inventario-lista"></div>
+      </div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section class="seccion" id="wishlist" style="padding-top:0;">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta-eyebrow">RF-14</p>
+          <h2>Lista de deseos</h2>
+        </div>
+        <div class="wishlist-lista" id="wishlist-lista">
+          <p class="wishlist-vacio">Aún no has guardado productos.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DRAWER CARRITO -->
+  <div class="carrito-overlay" id="carrito-overlay"></div>
+  <aside class="carrito-drawer" id="carrito-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="carrito-cabecera">
+      <strong>Tu carrito</strong>
+      <button class="boton-icono" id="btn-cerrar-carrito" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <ul class="carrito-lista" id="lista-carrito">
+      <li class="carrito-vacio" id="carrito-vacio-msg">Tu carrito está vacío.</li>
+    </ul>
+    <div class="carrito-resumen">
+      <div class="fila-resumen"><span>Subtotal</span><span id="carrito-subtotal">$0</span></div>
+      <a href="#checkout" class="boton boton-primario" id="btn-ir-checkout">Ir a pagar</a>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="contenedor footer-bottom">
+      <span>© 2026 Marketplace Local</span>
+    </div>
+  </footer>
+
+  <div class="toast-contenedor" id="toast-contenedor" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
