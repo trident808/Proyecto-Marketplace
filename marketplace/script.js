@@ -7,7 +7,7 @@ const productos = [
     rating:4.8, 
     resenas:132, 
     stock:24, 
-    imagen:"imagenes/cafe.jpg", 
+    imagen:"cafe.jpg", 
     descripcion:"Café de origen único, cultivado a 1.800 msnm y tostado en pequeños lotes por la familia productora." 
   },
   { id:2, 
@@ -18,7 +18,7 @@ const productos = [
     rating:4.6, 
     resenas:41, 
     stock:9, 
-    imagen:"imagenes/vasija.jpg", 
+    imagen:"vasija.jpg", 
     descripcion:"Vasija de barro cocido, moldeada y pintada a mano por artesanos de Ráquira." 
   },
   { id:3, 
