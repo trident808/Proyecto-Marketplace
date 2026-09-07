@@ -1,22 +1,22 @@
-:root{
-  --ink:#16281F;
-  --teal-deep:#123830;
-  --teal-mid:#1F5045;
-  --teal-soft:#2E6657;
-  --mustard:#E3A542;
-  --mustard-deep:#C88424;
-  --brick:#C1432E;
-  --paper:#F6F1E3;
-  --paper-dim:#ECE4CC;
-  --paper-line:rgba(22,40,31,.14);
-  --on-teal:#F6F1E3;
-  --radius:10px;
-  --radius-lg:18px;
-  --font-display:'Fraunces', serif;
-  --font-body:'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono:'Space Mono', monospace;
-  --shadow-soft:0 6px 24px rgba(18,56,48,.10);
-  --shadow-lift:0 14px 34px rgba(18,56,48,.18);
+ :root{
+  --ink:#17142b;
+  --teal-deep:#17142b;
+  --teal-mid:#6c2bd9;
+  --teal-soft:#8b5cf6;
+  --mustard:#facc15;
+  --mustard-deep:#eab308;
+  --brick:#ff4f87;
+  --paper:#f7f5ff;
+  --paper-dim:#eee9ff;
+  --paper-line:rgba(23,20,43,.12);
+  --on-teal:#ffffff;
+  --radius:14px;
+  --radius-lg:24px;
+  --font-display:'Inter',system-ui,-apple-system,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,sans-serif;
+  --font-mono:'Space Mono',monospace;
+  --shadow-soft:0 8px 28px rgba(108,43,217,.12);
+  --shadow-lift:0 18px 42px rgba(108,43,217,.20);
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -93,7 +93,7 @@ ul{margin:0;padding:0;list-style:none;}
 .logo svg{width:1.9rem;height:1.9rem;}
 .buscador-global{flex:1;display:flex;max-width:520px;margin:0 auto 0 1rem;}
 .buscador-global label{position:absolute;left:-9999px;}
-.buscador-global input{flex:1;border:none;border-radius:999px 0 0 999px;padding:.7em 1.1em;background:rgba(246,241,227,.94);color:var(--ink);}
+.buscador-global input{flex:1;border:none;border-radius:999px 0 0 999px;padding:.7em 1.1em;background:rgba(220, 220, 220, 0.94);color:var(--ink);}
 .buscador-global button{border:none;border-radius:0 999px 999px 0;background:var(--mustard);color:var(--ink);padding:0 1.1em;font-weight:700;}
 .header-acciones{display:flex;align-items:center;gap:.6rem;margin-left:auto;}
 .contador-badge{
@@ -213,3 +213,602 @@ ul{margin:0;padding:0;list-style:none;}
 .toast{background:var(--teal-deep);color:var(--on-teal);border-radius:999px;padding:.75em 1.3em;font-size:.88rem;box-shadow:var(--shadow-lift);display:flex;align-items:center;gap:.6rem;opacity:0;transform:translateY(12px);transition:opacity .25s ease, transform .25s ease;}
 .toast.visible{opacity:1;transform:translateY(0);}
 .oculto-visualmente{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+/* Campus / Gen-Z visual refresh */
+body{background:radial-gradient(circle at 8% 8%,rgba(250,204,21,.16),transparent 20rem),radial-gradient(circle at 92% 35%,rgba(255,79,135,.10),transparent 24rem),var(--paper);}
+.franja-toldo{height:8px;background:linear-gradient(90deg,#facc15 0 20%,#ff4f87 20% 40%,#8b5cf6 40% 60%,#22d3ee 60% 80%,#a3e635 80% 100%);}
+.site-header{background:rgba(23,20,43,.94);backdrop-filter:blur(16px);box-shadow:0 4px 24px rgba(23,20,43,.16);}
+.hero{background:linear-gradient(135deg,#17142b 0%,#3a1977 55%,#6c2bd9 100%);padding:4rem 0 4.5rem;overflow:hidden;}
+.hero-texto h1{font-weight:800;letter-spacing:-.055em;}
+.hero-texto h1 i{background:linear-gradient(90deg,#facc15,#ff8a65);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-picture{border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 60px rgba(0,0,0,.25);}
+.boton-primario{background:linear-gradient(135deg,#ff4f87,#ff765f);}
+.boton-primario:hover{background:linear-gradient(135deg,#f43f7a,#ff654d);}
+.boton-secundario{background:linear-gradient(135deg,#facc15,#ffe76a);}
+.etiqueta-eyebrow{color:#6c2bd9;} .etiqueta-eyebrow::before{background:#ff4f87;}
+.producto-card{border:1px solid rgba(108,43,217,.10);box-shadow:0 6px 22px rgba(23,20,43,.06);}
+.producto-card:hover{box-shadow:0 18px 40px rgba(108,43,217,.16);transform:translateY(-7px) rotate(-.3deg);}
+.producto-imagen,.ficha-imagen{background:linear-gradient(145deg,#f0eaff,#fff0f7);}
+.producto-categoria,.producto-stock,.ficha-tienda{color:#6c2bd9;}
+.producto-rating{color:#f59e0b;font-weight:700;}
+.btn-wishlist{box-shadow:0 4px 14px rgba(23,20,43,.10);}
+.btn-wishlist[aria-pressed="true"]{background:#ff4f87;}
+.ficha-precio{color:#ff4f87;}
+.carrito-cabecera{background:linear-gradient(135deg,#17142b,#6c2bd9);}
+.site-footer{background:#17142b;}
+.toast{background:#17142b;color:#fff;border:1px solid rgba(255,255,255,.12);}
+input:focus,select:focus,textarea:focus{border-color:#8b5cf6!important;box-shadow:0 0 0 4px rgba(139,92,246,.13);outline:none;}
+.selector-rol label:has(input:checked){border-color:#facc15;background:rgba(250,204,21,.10);}
+.metodo-pago label:has(input:checked){border-color:#8b5cf6;background:rgba(139,92,246,.07);}
+
+
+/* ===== CAMPUS / GEN-Z VISUAL REFRESH ===== */
+body{
+  background:
+    radial-gradient(circle at 8% 8%,rgba(250,204,21,.16),transparent 20rem),
+    radial-gradient(circle at 92% 35%,rgba(255,79,135,.10),transparent 24rem),
+    var(--paper);
+}
+.franja-toldo{
+  height:8px;
+  background:linear-gradient(90deg,#facc15 0 20%,#ff4f87 20% 40%,#8b5cf6 40% 60%,#22d3ee 60% 80%,#a3e635 80% 100%);
+}
+.site-header{
+  background:rgba(23,20,43,.94);
+  backdrop-filter:blur(16px);
+  box-shadow:0 4px 24px rgba(23,20,43,.16);
+}
+.logo{letter-spacing:-.03em;}
+.logo em{color:#facc15;}
+.buscador-global input{background:#fff;}
+.buscador-global button{background:#facc15;}
+.hero{
+  background:linear-gradient(135deg,#17142b 0%,#3a1977 55%,#6c2bd9 100%);
+  padding:4rem 0 4.5rem;
+  overflow:hidden;
+}
+.hero .contenedor{position:relative;}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:320px;height:320px;
+  right:-100px;top:70px;
+  background:rgba(250,204,21,.16);
+  border-radius:50%;
+}
+.hero-texto{position:relative;z-index:1;}
+.hero-texto h1{
+  font-weight:800;
+  letter-spacing:-.055em;
+}
+.hero-texto h1 i{
+  color:transparent;
+  background:linear-gradient(90deg,#facc15,#ff8a65);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.hero-texto p{color:rgba(255,255,255,.82);}
+.hero-picture{
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 24px 60px rgba(0,0,0,.25);
+}
+.hero-stats .dato strong{color:#facc15;}
+.boton{padding:.9em 1.55em;}
+.boton-primario{
+  background:linear-gradient(135deg,#ff4f87,#ff765f);
+  border:0;
+}
+.boton-primario:hover{background:linear-gradient(135deg,#f43f7a,#ff654d);}
+.boton-secundario{background:linear-gradient(135deg,#facc15,#ffe76a);}
+.boton-secundario:hover{background:#fde047;}
+.boton-linea:hover{border-color:#6c2bd9;color:#6c2bd9;}
+.etiqueta-eyebrow{color:#6c2bd9;}
+.etiqueta-eyebrow::before{background:#ff4f87;}
+.seccion-cabecera h2{font-weight:800;letter-spacing:-.045em;}
+.producto-card{
+  border:1px solid rgba(108,43,217,.10);
+  box-shadow:0 6px 22px rgba(23,20,43,.06);
+}
+.producto-card:hover{
+  box-shadow:0 18px 40px rgba(108,43,217,.16);
+  transform:translateY(-7px) rotate(-.3deg);
+}
+.producto-imagen{
+  background:linear-gradient(145deg,#f0eaff,#fff0f7);
+}
+.producto-categoria{color:#6c2bd9;}
+.producto-rating{color:#f59e0b;font-weight:700;}
+.precio-etiqueta{color:#17142b;}
+.precio-etiqueta::before{background:#facc15;border-color:#ff4f87;}
+.producto-stock{color:#6c2bd9;}
+.producto-stock.bajo{color:#ff4f87;}
+.btn-wishlist{box-shadow:0 4px 14px rgba(23,20,43,.10);}
+.btn-wishlist[aria-pressed="true"]{background:#ff4f87;}
+.ficha-imagen{background:linear-gradient(145deg,#eee9ff,#fff0f7);}
+.ficha-precio{color:#ff4f87;}
+.carrito-drawer{box-shadow:-18px 0 45px rgba(23,20,43,.20);}
+.carrito-cabecera{background:linear-gradient(135deg,#17142b,#6c2bd9);}
+.site-footer{background:#17142b;}
+.toast{background:#17142b;color:#fff;border:1px solid rgba(255,255,255,.12);}
+input:focus,select:focus,textarea:focus{
+  border-color:#8b5cf6!important;
+  box-shadow:0 0 0 4px rgba(139,92,246,.13);
+  outline:none;
+}
+.selector-rol label:has(input:checked){
+  border-color:#facc15;
+  background:rgba(250,204,21,.10);
+}
+.metodo-pago label:has(input:checked){
+  border-color:#8b5cf6;
+  background:rgba(139,92,246,.07);
+}
+@media (min-width:768px){
+  .hero{padding:5rem 0 5.5rem;}
+  .hero .contenedor{gap:2.5rem;}
+}
+
+/* =========================================================
+   MOBILE FIX — Marketplace UMB
+   Optimizado para pantallas de 320px a 767px
+   ========================================================= */
+
+@media (max-width: 767px){
+
+  html{
+    overflow-x:hidden;
+    scroll-padding-top:72px;
+  }
+
+  body{
+    width:100%;
+    min-width:0;
+    overflow-x:hidden;
+  }
+
+  .contenedor{
+    width:100%;
+    max-width:none;
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  /* HEADER */
+  .site-header{
+    position:sticky;
+    top:0;
+  }
+
+  .header-top{
+    min-height:64px;
+    padding:8px 0;
+    gap:8px;
+  }
+
+  .logo{
+    font-size:1.05rem;
+    gap:5px;
+    flex-shrink:0;
+  }
+
+  .logo svg{
+    width:26px;
+    height:26px;
+  }
+
+  .buscador-global{
+    order:3;
+    width:100%;
+    max-width:none;
+    flex:1 1 100%;
+    margin:0;
+  }
+
+  .buscador-global input{
+    min-width:0;
+    width:100%;
+    font-size:.85rem;
+    padding:.7em .85em;
+  }
+
+  .buscador-global button{
+    padding:0 .9em;
+  }
+
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  .header-acciones{
+    margin-left:auto;
+  }
+
+  .boton-icono{
+    width:40px;
+    height:40px;
+  }
+
+  .nav-categorias ul{
+    padding:4px 0 8px;
+  }
+
+  .nav-categorias a{
+    padding:10px 2px;
+  }
+
+
+  /* HERO */
+  .hero{
+    padding:32px 0 36px;
+  }
+
+  .hero .contenedor{
+    display:flex;
+    gap:24px;
+  }
+
+  .hero-texto h1{
+    max-width:none;
+    font-size:clamp(2rem,10vw,2.8rem);
+    line-height:1.02;
+  }
+
+  .hero-texto p{
+    font-size:.94rem;
+    line-height:1.6;
+  }
+
+  .hero-cta{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .hero-cta .boton{
+    width:100%;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:20px;
+  }
+
+  .hero-stats .dato{
+    min-width:0;
+  }
+
+  .hero-stats .dato strong{
+    font-size:1.05rem;
+  }
+
+  .hero-stats .dato span{
+    display:block;
+    font-size:.62rem;
+    line-height:1.25;
+  }
+
+  .hero-picture{
+    width:100%;
+    border-radius:18px;
+  }
+
+  .hero-picture img{
+    width:100%;
+    height:auto;
+    aspect-ratio:4/3;
+    object-fit:cover;
+  }
+
+
+  /* SECCIONES */
+  .seccion{
+    padding:38px 0;
+  }
+
+  .seccion-cabecera{
+    margin-bottom:20px;
+  }
+
+  .seccion-cabecera h2{
+    font-size:1.65rem;
+    line-height:1.08;
+  }
+
+  .seccion-cabecera p{
+    font-size:.9rem;
+  }
+
+
+  /* FORMULARIOS */
+  .tarjeta-cuentas,
+  .tarjeta,
+  .ficha-producto{
+    border-radius:18px;
+    padding:16px;
+  }
+
+  .selector-rol{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .selector-rol label{
+    min-width:0;
+    width:100%;
+  }
+
+  .campos-formulario{
+    grid-template-columns:1fr;
+  }
+
+  .campos-tienda .campos-formulario{
+    grid-template-columns:1fr;
+  }
+
+  .campo input,
+  .campo select,
+  .campo textarea{
+    width:100%;
+    max-width:100%;
+  }
+
+
+  /* CATÁLOGO */
+  .filtros-toggle{
+    width:100%;
+    margin-bottom:12px;
+  }
+
+  .layout-catalogo{
+    display:block;
+  }
+
+  .filtros-aside{
+    margin-bottom:18px;
+  }
+
+  .catalogo-cabecera{
+    align-items:center;
+  }
+
+  .catalogo-cabecera h3{
+    font-size:.98rem !important;
+  }
+
+  .catalogo-resultado{
+    font-size:.75rem;
+  }
+
+  .catalogo{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .producto-card{
+    width:100%;
+    min-width:0;
+  }
+
+  .producto-imagen{
+    aspect-ratio:16/10;
+  }
+
+  .producto-imagen svg{
+    max-width:48%;
+    max-height:80%;
+  }
+
+  .producto-cuerpo{
+    padding:14px;
+  }
+
+  .producto-cuerpo h3{
+    font-size:1.05rem;
+    line-height:1.2;
+  }
+
+  .producto-precio-fila{
+    align-items:flex-end;
+  }
+
+  .precio-etiqueta{
+    font-size:.98rem;
+  }
+
+
+  /* FICHA DE PRODUCTO */
+  .ficha-producto{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .ficha-imagen{
+    width:100%;
+  }
+
+  .ficha-imagen img{
+    width:100%;
+    height:auto;
+  }
+
+  .ficha-nombre{
+    font-size:1.65rem;
+    line-height:1.08;
+  }
+
+  .ficha-precio{
+    font-size:1.4rem;
+  }
+
+  .ficha-cantidad{
+    flex-wrap:wrap;
+  }
+
+  .ficha-cantidad input{
+    width:70px;
+  }
+
+  .btn-agregar-carrito{
+    width:100% !important;
+  }
+
+
+  /* CHECKOUT */
+  .checkout-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .metodo-pago{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .metodo-pago label{
+    min-width:0;
+    width:100%;
+  }
+
+
+  /* ESTADO DEL PEDIDO */
+  .stepper-pedido{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    margin:20px 0;
+  }
+
+  .paso-pedido{
+    min-width:0;
+    display:flex;
+    align-items:center;
+    text-align:left;
+    gap:12px;
+    padding:7px 0;
+  }
+
+  .paso-pedido::before{
+    top:-10px;
+    left:13px;
+    width:2px;
+    height:28px;
+  }
+
+  .paso-pedido:first-child::before{
+    display:none;
+  }
+
+  .paso-pedido .punto{
+    flex:0 0 28px;
+    margin:0;
+  }
+
+  .paso-pedido .texto{
+    font-size:.88rem;
+  }
+
+
+  /* INVENTARIO */
+  .inventario-lista{
+    grid-template-columns:1fr;
+  }
+
+  .inventario-item{
+    min-width:0;
+    gap:10px;
+  }
+
+  .inventario-item strong{
+    display:block;
+    max-width:220px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+
+  /* WISHLIST */
+  .wishlist-lista{
+    grid-template-columns:1fr;
+  }
+
+  .wishlist-item{
+    align-items:center;
+    padding:12px;
+  }
+
+
+  /* CARRITO */
+  .carrito-drawer{
+    width:100%;
+    max-width:100%;
+  }
+
+  .carrito-lista{
+    padding:12px 16px;
+  }
+
+  .carrito-item{
+    font-size:.84rem;
+  }
+
+  .carrito-resumen{
+    padding:14px 16px;
+  }
+
+
+  /* FOOTER / NOTIFICACIONES */
+  .site-footer{
+    margin-top:0;
+  }
+
+  .footer-bottom{
+    display:block;
+    text-align:center;
+  }
+
+  .toast-contenedor{
+    bottom:12px;
+    width:calc(100vw - 24px);
+  }
+
+  .toast{
+    max-width:100%;
+    border-radius:14px;
+    text-align:center;
+  }
+}
+
+
+/* =========================================================
+   TELÉFONOS PEQUEÑOS — 380px o menos
+   ========================================================= */
+
+@media (max-width:380px){
+
+  .contenedor{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .logo{
+    font-size:.95rem;
+  }
+
+  .hero-stats{
+    gap:5px;
+  }
+
+  .hero-stats .dato strong{
+    font-size:.95rem;
+  }
+
+  .hero-stats .dato span{
+    font-size:.56rem;
+  }
+
+  .seccion-cabecera h2{
+    font-size:1.5rem;
+  }
+}

@@ -1,12 +1,91 @@
 const productos = [
-  { id:1, nombre:"Café orgánico Tierra Alta 500g", tienda:"Finca Tierra Alta · Huila", categoria:"Alimentos y bebidas", precio:38000, rating:4.8, resenas:132, stock:24, icono:"cafe", descripcion:"Café de origen único, cultivado a 1.800 msnm y tostado en pequeños lotes por la familia productora." },
-  { id:2, nombre:"Vasija artesanal de barro", tienda:"Barro & Fuego · Boyacá", categoria:"Artesanías", precio:95000, rating:4.6, resenas:41, stock:9, icono:"ceramica", descripcion:"Vasija de barro cocido, moldeada y pintada a mano por artesanos de Ráquira." },
-  { id:3, nombre:"Mochila tejida wayuu", tienda:"Telar Wayuu · Riohacha", categoria:"Moda y accesorios", precio:180000, rating:5.0, resenas:87, stock:5, icono:"textil", descripcion:"Mochila tejida a mano en algodón, con patrones tradicionales wayuu." },
-  { id:4, nombre:"Miel pura de abejas 350ml", tienda:"Apiario San Vicente", categoria:"Alimentos y bebidas", precio:22000, rating:4.7, resenas:64, stock:40, icono:"miel", descripcion:"Miel 100% pura extraída en frío, sin aditivos ni procesos industriales." },
-  { id:5, nombre:"Aretes de filigrana en plata", tienda:"Joyería Mompox", categoria:"Moda y accesorios", precio:145000, rating:4.9, resenas:29, stock:7, icono:"joyeria", descripcion:"Aretes elaborados con la técnica tradicional de filigrana momposina." },
-  { id:6, nombre:"Chocolate 70% cacao 100g", tienda:"Cacao Sierra Nevada", categoria:"Alimentos y bebidas", precio:15000, rating:4.5, resenas:58, stock:60, icono:"chocolate", descripcion:"Barra de chocolate oscuro elaborada con cacao fino de aroma." },
-  { id:7, nombre:"Velas de cera de abeja (set x3)", tienda:"Casa Cera", categoria:"Hogar", precio:48000, rating:4.4, resenas:19, stock:15, icono:"vela", descripcion:"Velas artesanales de cera de abeja natural." },
-  { id:8, nombre:"Jabón natural de avena 100g", tienda:"Raíz Botánica", categoria:"Belleza natural", precio:12000, rating:4.6, resenas:73, stock:33, icono:"jabon", descripcion:"Jabón artesanal elaborado con avena e ingredientes vegetales." }
+  { id:1, 
+    nombre:"Café orgánico Tierra Alta 500g",
+    tienda:"Finca Tierra Alta · Huila",
+    categoria:"Alimentos y bebidas", 
+    precio:38000, 
+    rating:4.8, 
+    resenas:132, 
+    stock:24, 
+    imagen:"imagenes/cafe.jpg", 
+    descripcion:"Café de origen único, cultivado a 1.800 msnm y tostado en pequeños lotes por la familia productora." 
+  },
+  { id:2, 
+    nombre:"Vasija artesanal de barro", 
+    tienda:"Barro & Fuego · Boyacá", 
+    categoria:"Artesanías", 
+    precio:95000, 
+    rating:4.6, 
+    resenas:41, 
+    stock:9, 
+    imagen:"imagenes/vasija.jpg", 
+    descripcion:"Vasija de barro cocido, moldeada y pintada a mano por artesanos de Ráquira." 
+  },
+  { id:3, 
+    nombre:"Mochila tejida wayuu", 
+    tienda:"Telar Wayuu · Riohacha", 
+    categoria:"Moda y accesorios", 
+    precio:180000, 
+    rating:5.0, resenas:87, 
+    stock:5, 
+    icono:"textil", 
+    descripcion:"Mochila tejida a mano en algodón, con patrones tradicionales wayuu." 
+  },
+  { id:4, 
+    nombre:"Miel pura de abejas 350ml", 
+    tienda:"Apiario San Vicente", 
+    categoria:"Alimentos y bebidas", 
+    precio:22000, 
+    rating:4.7, 
+    resenas:64, 
+    stock:40, 
+    icono:"miel", 
+    descripcion:"Miel 100% pura extraída en frío, sin aditivos ni procesos industriales." 
+  },
+  { id:5, 
+    nombre:"Aretes de filigrana en plata", 
+    tienda:"Joyería Mompox", 
+    categoria:"Moda y accesorios", 
+    precio:145000, 
+    rating:4.9, 
+    resenas:29, 
+    stock:7, 
+    icono:"joyeria", 
+    descripcion:"Aretes elaborados con la técnica tradicional de filigrana momposina." 
+  },
+  { id:6, 
+    nombre:"Chocolate 70% cacao 100g", 
+    tienda:"Cacao Sierra Nevada", 
+    categoria:"Alimentos y bebidas", 
+    precio:15000, 
+    rating:4.5, 
+    resenas:58, 
+    stock:60, 
+    icono:"chocolate", 
+    descripcion:"Barra de chocolate oscuro elaborada con cacao fino de aroma." 
+  },
+  { id:7, 
+    nombre:"Velas de cera de abeja (set x3)", 
+    tienda:"Casa Cera", 
+    categoria:"Hogar", 
+    precio:48000, 
+    rating:4.4, 
+    resenas:19, 
+    stock:15, 
+    icono:"vela", 
+    descripcion:"Velas artesanales de cera de abeja natural." 
+  },
+  { id:8, 
+    nombre:"Jabón natural de avena 100g", 
+    tienda:"Raíz Botánica", 
+    categoria:"Belleza natural", 
+    precio:12000, 
+    rating:4.6, 
+    resenas:73, 
+    stock:33, 
+    icono:"jabon", 
+    descripcion:"Jabón artesanal elaborado con avena e ingredientes vegetales." 
+  }
 ];
 
 const iconosSVG = {
@@ -58,7 +137,7 @@ function renderCatalogo(){
     article.className = "producto-card";
     article.innerHTML = `
       <figure class="producto-imagen">
-        ${iconosSVG[p.icono] || ''}
+        <img src="${p.imagen}" alt="${p.nombre}">
         <figcaption>${p.tienda.split(" · ")[0]}</figcaption>
         <button class="btn-wishlist" data-producto-id="${p.id}" aria-pressed="${estado.wishlist.includes(p.id)}">♥</button>
       </figure>
@@ -244,8 +323,8 @@ function cargarFichaProducto(idProducto){
   document.getElementById("ficha-descripcion").textContent = p.descripcion;
   document.getElementById("ficha-precio").textContent = formatoCOP(p.precio);
   document.getElementById("ficha-stock").textContent = p.stock + " unidades disponibles";
-  const svgData = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgb(236,228,204)"/>${iconosSVG[p.icono].replace(/<svg[^>]*>|<\/svg>/g,'')}</svg>`);
-  document.getElementById("ficha-imagen-svg").src = svgData;
+  document.getElementById("ficha-imagen-svg").src = p.imagen;
+  document.getElementById("ficha-imagen-svg").alt = p.nombre;
 }
 
 document.querySelectorAll('input[name="rol"]').forEach((radio) => {

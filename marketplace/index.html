@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace Local</title>
-  <meta name="description" content="Marketplace multivendedor de comercio electrónico para emprendimientos locales, con pasarela de pagos integrada y gestión de inventario en tiempo real.">
+  <title>Marketplace UMB</title>
+  <meta name="description" content="Marketplace multivendedor de comercio electrónico para emprendimientos universitarios, con pasarela de pagos integrada y gestión de inventario en tiempo real.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
     <div class="contenedor header-top">
       <a class="logo" href="#hero">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l1.5-4h15L21 8M3 8h18M3 8l1 11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1l1-11M8 11a2 2 0 1 1-4 0M12 11a2 2 0 1 1-4 0M16 11a2 2 0 1 1-4 0M20 11a2 2 0 1 1-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        Marketplace <em>Local</em>
+        Marketplace <em>UMB</em>
       </a>
       <form class="buscador-global" role="search" id="form-busqueda-global">
         <label for="busqueda-global">Buscar productos</label>
@@ -45,7 +45,7 @@
           <li><a href="#catalogo">Más vendidos</a></li>
           <li><a href="#estado-pedido">Mis pedidos</a></li>
           <li><a href="#wishlist">Lista de deseos</a></li>
-          <li><a href="#cuentas">Vender en Marketplace Local</a></li>
+          <li><a href="#cuentas">Vender en Marketplace UMB</a></li>
         </ul>
       </div>
     </nav>
@@ -58,9 +58,9 @@
     <section class="hero" id="hero">
       <div class="contenedor">
         <div class="hero-texto">
-          <p class="etiqueta-eyebrow" style="color:var(--mustard)">Emprendimientos locales · Colombia</p>
-          <h1>El mercado de tu barrio, <i>ahora en línea.</i></h1>
-          <p>Compra directo a microempresarios y emprendimientos locales: café de finca, artesanías, moda y mucho más. Pago seguro, inventario actualizado en tiempo real y envío rastreado en cada pedido.</p>
+          <p class="etiqueta-eyebrow" style="color:var(--mustard)">Emprendimientos Universitarios · UMB</p>
+          <h1>El mercado de tu universidad, <i>ahora en línea.</i></h1>
+          <p>Compra directo a microempresarios y emprendimientos universitarios: comida casera, panaderia, moda y mucho más. Pago seguro, inventario actualizado en tiempo real y envío rastreado en cada pedido.</p>
           <div class="hero-cta">
             <a href="#catalogo" class="boton boton-secundario">Explorar catálogo</a>
             <a href="#cuentas" class="boton boton-fantasma">Abrir mi tienda</a>
@@ -72,8 +72,13 @@
           </div>
         </div>
         <picture class="hero-picture">
-          <source media="(min-width: 768px)" srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 460'%3E%3Crect width='1000' height='460' fill='rgb(30,86,74)'/%3E%3Cg opacity='0.9'%3E%3Crect x='0' y='330' width='1000' height='130' fill='rgb(20,58,50)'/%3E%3Ccircle cx='150' cy='190' r='95' fill='rgb(227,165,66)'/%3E%3Ccircle cx='150' cy='190' r='95' fill='none' stroke='rgb(18,56,48)' stroke-width='6'/%3E%3Crect x='330' y='120' width='150' height='190' rx='14' fill='rgb(193,67,46)'/%3E%3Crect x='510' y='90' width='170' height='220' rx='14' fill='rgb(246,241,227)'/%3E%3Ccircle cx='595' cy='170' r='40' fill='rgb(30,86,74)'/%3E%3Crect x='710' y='150' width='210' height='160' rx='14' fill='rgb(200,132,36)'/%3E%3Cpath d='M0 330 L1000 330' stroke='rgb(246,241,227)' stroke-width='4' stroke-dasharray='2 22'/%3E%3C/g%3E%3C/svg%3E">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 520'%3E%3Crect width='640' height='520' fill='rgb(30,86,74)'/%3E%3Crect x='0' y='400' width='640' height='120' fill='rgb(20,58,50)'/%3E%3Ccircle cx='320' cy='210' r='120' fill='rgb(227,165,66)'/%3E%3Crect x='120' y='300' width='150' height='150' rx='16' fill='rgb(193,67,46)'/%3E%3Crect x='370' y='300' width='150' height='150' rx='16' fill='rgb(246,241,227)'/%3E%3C/svg%3E" alt="Ilustración de un mercado local" width="640" height="520" loading="eager">
+          <img
+            src="imagenes/imagen-principal.jpg" 
+            alt="Marketplace UMB - Emprendimientos universitarios"
+            width="800"
+            height="460"
+            loading="eager"
+          >
         </picture>
       </div>
     </section>
@@ -91,7 +96,7 @@
             <legend class="oculto-visualmente">Tipo de cuenta</legend>
             <label>
               <input type="radio" name="rol" value="comprador" checked>
-              <span><strong>Comprador</strong><span>Compra productos de varias tiendas locales.</span></span>
+              <span><strong>Comprador</strong><span>Compra productos de varias tiendas.</span></span>
             </label>
             <label>
               <input type="radio" name="rol" value="vendedor" id="radio-vendedor">
@@ -151,7 +156,7 @@
         <div class="seccion-cabecera">
           <p class="etiqueta-eyebrow">RF-04 · RF-05</p>
           <h2>Catálogo multivendedor</h2>
-          <p>Busca, filtra y arma un solo carrito con productos de tiendas distintas.</p>
+          <p>Busca, filtra y arma un solo carrito con productos de distintas tiendas.</p>
         </div>
         <button class="boton boton-linea filtros-toggle" id="btn-toggle-filtros" aria-expanded="false" aria-controls="filtros-aside">Filtros</button>
         <div class="layout-catalogo">
@@ -237,7 +242,7 @@
               <h4>Reseñas de compradores</h4>
               <div class="resena">
                 <div class="resena-cabecera"><strong>Marcela R.</strong><span>★★★★★</span></div>
-                <p style="margin:0;">Llegó fresco y bien empacado. El sabor es increíble.</p>
+                <p style="margin:0;">Llegó rapido. El sabor es increíble.</p>
               </div>
             </div>
           </div>
