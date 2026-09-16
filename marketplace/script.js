@@ -18,7 +18,7 @@ const productos = [
     rating:4.6, 
     resenas:41, 
     stock:9, 
-    imagen:"vasija.jpg", 
+    imagen:"marketplace/vasija.jpg", 
     descripcion:"Vasija de barro cocido, moldeada y pintada a mano por artesanos de Ráquira." 
   },
   { id:3, 
