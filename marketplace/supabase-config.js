@@ -22,9 +22,9 @@
 // 1. CREDENCIALES DE SUPABASE
 // =========================================================
 
-const SUPABASE_URL = "PEGA_AQUI_TU_PROJECT_URL";
+const SUPABASE_URL = "https://sispastooqxbzunmglxi.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY = "PEGA_AQUI_TU_PUBLISHABLE_KEY";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz";
 
 
 // =========================================================
@@ -32,8 +32,8 @@ const SUPABASE_PUBLISHABLE_KEY = "PEGA_AQUI_TU_PUBLISHABLE_KEY";
 // =========================================================
 
 if (
-    SUPABASE_URL === "PEGA_AQUI_TU_PROJECT_URL" ||
-    SUPABASE_PUBLISHABLE_KEY === "PEGA_AQUI_TU_PUBLISHABLE_KEY"
+    SUPABASE_URL === "https://sispastooqxbzunmglxi.supabase.co" ||
+    SUPABASE_PUBLISHABLE_KEY === "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz"
 ) {
     console.error(
         "Supabase no está configurado. " +
@@ -53,8 +53,8 @@ if (!window.supabase) {
         "de supabase-config.js en index.html."
     );
 } else if (
-    SUPABASE_URL !== "PEGA_AQUI_TU_PROJECT_URL" &&
-    SUPABASE_PUBLISHABLE_KEY !== "PEGA_AQUI_TU_PUBLISHABLE_KEY"
+    SUPABASE_URL !== "https://sispastooqxbzunmglxi.supabase.co" &&
+    SUPABASE_PUBLISHABLE_KEY !== "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz"
 ) {
     window.supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
