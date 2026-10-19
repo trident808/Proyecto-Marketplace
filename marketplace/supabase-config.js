@@ -26,7 +26,7 @@ const SUPABASE_URL =
     "https://sispastooqxbzunmglxi.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-    "PEGA_AQUI_TU_CLAVE_PUBLICA_REAL";
+    "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz";
 
 
 // =========================================================
@@ -42,8 +42,8 @@ function validarConfiguracionSupabase() {
     }
 
     if (
-        SUPABASE_URL.includes("PEGA_AQUI") ||
-        SUPABASE_PUBLISHABLE_KEY.includes("PEGA_AQUI")
+        SUPABASE_URL.includes("https://sispastooqxbzunmglxi.supabase.co") ||
+        SUPABASE_PUBLISHABLE_KEY.includes("sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz")
     ) {
         console.error(
             "[Supabase] Reemplaza los valores de ejemplo " +
@@ -52,7 +52,7 @@ function validarConfiguracionSupabase() {
         return false;
     }
 
-    if (!SUPABASE_URL.startsWith("https://")) {
+    if (!SUPABASE_URL.startsWith("https://sispastooqxbzunmglxi.supabase.co")) {
         console.error(
             "[Supabase] La URL del proyecto no es válida."
         );
@@ -90,8 +90,8 @@ function inicializarSupabase() {
     if (
         !SUPABASE_URL ||
         !SUPABASE_PUBLISHABLE_KEY ||
-        SUPABASE_URL.includes("PEGA_AQUI") ||
-        SUPABASE_PUBLISHABLE_KEY.includes("PEGA_AQUI")
+        SUPABASE_URL.includes("https://sispastooqxbzunmglxi.supabase.co") ||
+        SUPABASE_PUBLISHABLE_KEY.includes("sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz")
     ) {
         console.error(
             "Falta configurar la URL o la clave pública."
