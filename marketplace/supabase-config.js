@@ -1,86 +1,111 @@
+
 /*
  * =========================================================
  * MARKETPLACE UMB
+ * Archivo: marketplace/supabase-config.js
  * Configuración de Supabase
  * =========================================================
  *
- * IMPORTANTE:
+ * Requisitos:
+ * - La biblioteca supabase-js debe cargarse antes.
+ * - Reemplazar la URL y la clave pública.
+ * - Configurar las políticas RLS en Supabase.
  *
- * Aquí solamente se utiliza la URL pública del proyecto
- * y la Publishable Key / anon key.
- *
- * NUNCA colocar:
+ * Nunca colocar aquí:
  * - service_role
  * - sb_secret_...
- * - contraseñas
- * - claves privadas
- *
- * La seguridad de la aplicación se controla mediante
- * autenticación + RLS + políticas de PostgreSQL.
+ * - Contraseñas de la base de datos
  * =========================================================
  */
 
-const SUPABASE_URL = "PEGAR_AQUI_PROJECT_URL";
+// =========================================================
+// 1. CREDENCIALES DE SUPABASE
+// =========================================================
 
-const SUPABASE_PUBLISHABLE_KEY = "PEGAR_AQUI_PUBLISHABLE_KEY";
+const SUPABASE_URL = "PEGA_AQUI_TU_PROJECT_URL";
 
-/*
- * Crear cliente Supabase.
- *
- * La librería supabase-js se carga previamente desde CDN
- * en index.html.
- */
+const SUPABASE_PUBLISHABLE_KEY = "PEGA_AQUI_TU_PUBLISHABLE_KEY";
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY,
-    {
-        auth: {
-            autoRefreshToken: true,
-            persistSession: true,
-            detectSessionInUrl: true
+
+// =========================================================
+// 2. VALIDAR LA CONFIGURACIÓN
+// =========================================================
+
+if (
+    SUPABASE_URL === "PEGA_AQUI_TU_PROJECT_URL" ||
+    SUPABASE_PUBLISHABLE_KEY === "PEGA_AQUI_TU_PUBLISHABLE_KEY"
+) {
+    console.error(
+        "Supabase no está configurado. " +
+        "Reemplaza la URL y la clave pública."
+    );
+}
+
+
+// =========================================================
+// 3. CREAR EL CLIENTE
+// =========================================================
+
+if (!window.supabase) {
+    console.error(
+        "No se encontró la biblioteca de Supabase. " +
+        "Comprueba que supabase-js se cargue antes " +
+        "de supabase-config.js en index.html."
+    );
+} else if (
+    SUPABASE_URL !== "PEGA_AQUI_TU_PROJECT_URL" &&
+    SUPABASE_PUBLISHABLE_KEY !== "PEGA_AQUI_TU_PUBLISHABLE_KEY"
+) {
+    window.supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY,
+        {
+            auth: {
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: true
+            }
         }
-    }
-);
+    );
+}
 
 
-/*
- * =========================================================
- * FUNCIÓN DE PRUEBA DE CONEXIÓN
- * =========================================================
- *
- * Esta función consulta la tabla profiles.
- *
- * Todavía NO estamos registrando usuarios.
- * Solo comprobamos que:
- *
- * navegador
- *      ↓
- * Supabase
- *      ↓
- * PostgreSQL
- *
- * funciona correctamente.
- */
+// =========================================================
+// 4. FUNCIÓN PARA PROBAR LA CONEXIÓN
+// =========================================================
 
 async function probarConexionSupabase() {
-
     try {
+        if (!window.supabaseClient) {
+            throw new Error(
+                "El cliente no está inicializado. " +
+                "Revisa las credenciales y la biblioteca."
+            );
+        }
 
         console.log("Marketplace UMB");
-        console.log("Iniciando conexión con Supabase...");
+        console.log("Probando conexión con Supabase...");
 
-        const { data, error } = await supabaseClient
-            .from("profiles")
+        /*
+         * Consulta de prueba.
+         *
+         * Este nombre corresponde al esquema SQL
+         * anterior: public.perfiles.
+         *
+         * Si tu tabla se llama profiles,
+         * cambia "perfiles" por "profiles".
+         */
+
+        const { data, error } = await window.supabaseClient
+            .from("perfiles")
             .select("id")
             .limit(1);
 
         if (error) {
-
-            console.error(
-                "Error al conectar con Supabase:",
-                error
-            );
+            console.error("Error de Supabase:", error.message);
+            console.error("Código:", error.code);
+            console.error("Detalles:", error.details);
+            console.error("Sugerencia:", error.hint);
 
             return {
                 correcto: false,
@@ -88,14 +113,8 @@ async function probarConexionSupabase() {
             };
         }
 
-        console.log(
-            "Conexión con Supabase establecida correctamente."
-        );
-
-        console.log(
-            "Resultado de prueba:",
-            data
-        );
+        console.log("Consulta realizada correctamente.");
+        console.log("Resultado:", data);
 
         return {
             correcto: true,
@@ -103,10 +122,9 @@ async function probarConexionSupabase() {
         };
 
     } catch (error) {
-
         console.error(
-            "Error inesperado conectando con Supabase:",
-            error
+            "Error al probar la conexión:",
+            error.message || error
         );
 
         return {
@@ -117,12 +135,79 @@ async function probarConexionSupabase() {
 }
 
 
-/*
- * Ejecutar prueba automáticamente.
- *
- * La dejamos disponible también desde la consola:
- *
- * probarConexionSupabase()
- */
+// =========================================================
+// 5. EXPONER FUNCIONES PARA EL RESTO DE LA APLICACIÓN
+// =========================================================
 
+// Cliente accesible desde otros scripts.
 window.probarConexionSupabase = probarConexionSupabase;
+
+
+// =========================================================
+// 6. CONSULTAR PRODUCTOS
+// =========================================================
+
+async function obtenerProductosSupabase() {
+    try {
+        if (!window.supabaseClient) {
+            throw new Error(
+                "Supabase no está inicializado."
+            );
+        }
+
+        const { data, error } = await window.supabaseClient
+            .from("productos")
+            .select("*")
+            .order("id", { ascending: true });
+
+        if (error) {
+            console.error(
+                "Error al obtener productos:",
+                error.message
+            );
+
+            return {
+                correcto: false,
+                productos: [],
+                error: error
+            };
+        }
+
+        console.log("Productos obtenidos:", data);
+
+        return {
+            correcto: true,
+            productos: data,
+            error: null
+        };
+
+    } catch (error) {
+        console.error(
+            "Error consultando productos:",
+            error.message || error
+        );
+
+        return {
+            correcto: false,
+            productos: [],
+            error: error
+        };
+    }
+}
+
+window.obtenerProductosSupabase = obtenerProductosSupabase;
+
+
+// =========================================================
+// 7. MENSAJE DE INICIALIZACIÓN
+// =========================================================
+
+if (window.supabaseClient) {
+    console.log(
+        "Cliente Supabase inicializado correctamente."
+    );
+} else {
+    console.warn(
+        "Cliente Supabase pendiente de configuración."
+    );
+}
