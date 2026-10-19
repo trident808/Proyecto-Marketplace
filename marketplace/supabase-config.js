@@ -78,16 +78,24 @@ function validarConfiguracionSupabase() {
 // 3. INICIALIZAR CLIENTE
 // =========================================================
 
+
 function inicializarSupabase() {
+    console.log("[Supabase] Comprobando inicialización...");
+
     if (!window.supabase) {
-        console.error(
-            "[Supabase] No se cargó supabase-js. " +
-            "Revisa el orden de las etiquetas script."
-        );
+        console.error("La biblioteca de Supabase no está cargada.");
         return null;
     }
 
-    if (!validarConfiguracionSupabase()) {
+    if (
+        !SUPABASE_URL ||
+        !SUPABASE_PUBLISHABLE_KEY ||
+        SUPABASE_URL.includes("PEGA_AQUI") ||
+        SUPABASE_PUBLISHABLE_KEY.includes("PEGA_AQUI")
+    ) {
+        console.error(
+            "Falta configurar la URL o la clave pública."
+        );
         return null;
     }
 
@@ -104,26 +112,19 @@ function inicializarSupabase() {
             }
         );
 
-        console.log(
-            "[Supabase] Cliente inicializado correctamente."
-        );
-
+        console.log("[Supabase] Cliente creado correctamente.");
         return cliente;
 
     } catch (error) {
         console.error(
-            "[Supabase] No se pudo inicializar el cliente:",
+            "[Supabase] Error al crear el cliente:",
             error
         );
-
         return null;
     }
 }
 
-
-// El cliente se inicializa una sola vez.
 window.supabaseClient = inicializarSupabase();
-
 
 // =========================================================
 // 4. PROBAR CONEXIÓN
