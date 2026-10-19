@@ -7,55 +7,61 @@
  * =========================================================
  *
  * Requisitos:
- * - La biblioteca supabase-js debe cargarse antes.
- * - Reemplazar la URL y la clave pública.
- * - Configurar las políticas RLS en Supabase.
+ * - Cargar supabase-js antes de este archivo.
+ * - Configurar la URL y la clave pública.
+ * - Tener las tablas creadas en Supabase.
+ * - Configurar correctamente las políticas RLS.
  *
- * Nunca colocar aquí:
- * - service_role
+ * NUNCA incluir:
  * - sb_secret_...
+ * - service_role
  * - Contraseñas de la base de datos
  * =========================================================
  */
+
 
 // =========================================================
 // 1. CREDENCIALES DE SUPABASE
 // =========================================================
 
-const SUPABASE_URL = "https://sispastooqxbzunmglxi.supabase.co";
+// URL de tu proyecto
+const SUPABASE_URL =
+    "https://sispastooqxbzunmglxi.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz";
+// Clave pública (Publishable Key)
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz";
 
 
 // =========================================================
 // 2. VALIDAR LA CONFIGURACIÓN
 // =========================================================
 
-if (
-    SUPABASE_URL === "https://sispastooqxbzunmglxi.supabase.co" ||
-    SUPABASE_PUBLISHABLE_KEY === "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz"
-) {
+const configuracionValida =
+    SUPABASE_URL.startsWith("https://") &&
+    SUPABASE_URL.endsWith(".supabase.co") &&
+    SUPABASE_PUBLISHABLE_KEY.length > 0 &&
+    !SUPABASE_URL.includes("PEGAR_AQUI") &&
+    !SUPABASE_PUBLISHABLE_KEY.includes("PEGAR_AQUI");
+
+
+// =========================================================
+// 3. CREAR EL CLIENTE SUPABASE
+// =========================================================
+
+if (!configuracionValida) {
     console.error(
         "Supabase no está configurado. " +
-        "Reemplaza la URL y la clave pública."
+        "Revisa la URL y la clave pública."
     );
-}
 
-
-// =========================================================
-// 3. CREAR EL CLIENTE
-// =========================================================
-
-if (!window.supabase) {
+} else if (!window.supabase) {
     console.error(
-        "No se encontró la biblioteca de Supabase. " +
-        "Comprueba que supabase-js se cargue antes " +
-        "de supabase-config.js en index.html."
+        "No se encontró la biblioteca supabase-js. " +
+        "Comprueba las etiquetas script de index.html."
     );
-} else if (
-    SUPABASE_URL !== "https://sispastooqxbzunmglxi.supabase.co" &&
-    SUPABASE_PUBLISHABLE_KEY !== "sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz"
-) {
+
+} else {
     window.supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY,
@@ -67,11 +73,15 @@ if (!window.supabase) {
             }
         }
     );
+
+    console.log(
+        "Cliente Supabase inicializado correctamente."
+    );
 }
 
 
 // =========================================================
-// 4. FUNCIÓN PARA PROBAR LA CONEXIÓN
+// 4. PROBAR LA CONEXIÓN CON LA BASE DE DATOS
 // =========================================================
 
 async function probarConexionSupabase() {
@@ -79,7 +89,7 @@ async function probarConexionSupabase() {
         if (!window.supabaseClient) {
             throw new Error(
                 "El cliente no está inicializado. " +
-                "Revisa las credenciales y la biblioteca."
+                "Comprueba las credenciales y la biblioteca."
             );
         }
 
@@ -87,13 +97,11 @@ async function probarConexionSupabase() {
         console.log("Probando conexión con Supabase...");
 
         /*
-         * Consulta de prueba.
+         * La tabla debe existir.
          *
-         * Este nombre corresponde al esquema SQL
-         * anterior: public.perfiles.
-         *
-         * Si tu tabla se llama profiles,
-         * cambia "perfiles" por "profiles".
+         * Si creaste public.perfiles, deja "perfiles".
+         * Si tu tabla se llama public.profiles,
+         * cambia el nombre por "profiles".
          */
 
         const { data, error } = await window.supabaseClient
@@ -102,7 +110,11 @@ async function probarConexionSupabase() {
             .limit(1);
 
         if (error) {
-            console.error("Error de Supabase:", error.message);
+            console.error(
+                "Error al consultar Supabase:",
+                error.message
+            );
+
             console.error("Código:", error.code);
             console.error("Detalles:", error.details);
             console.error("Sugerencia:", error.hint);
@@ -113,7 +125,10 @@ async function probarConexionSupabase() {
             };
         }
 
-        console.log("Consulta realizada correctamente.");
+        console.log(
+            "Conexión y consulta realizadas correctamente."
+        );
+
         console.log("Resultado:", data);
 
         return {
@@ -135,23 +150,20 @@ async function probarConexionSupabase() {
 }
 
 
-// =========================================================
-// 5. EXPONER FUNCIONES PARA EL RESTO DE LA APLICACIÓN
-// =========================================================
-
-// Cliente accesible desde otros scripts.
+// Hacer la función accesible desde otros archivos
+// y desde la consola del navegador.
 window.probarConexionSupabase = probarConexionSupabase;
 
 
 // =========================================================
-// 6. CONSULTAR PRODUCTOS
+// 5. OBTENER PRODUCTOS
 // =========================================================
 
 async function obtenerProductosSupabase() {
     try {
         if (!window.supabaseClient) {
             throw new Error(
-                "Supabase no está inicializado."
+                "El cliente Supabase no está inicializado."
             );
         }
 
@@ -166,6 +178,9 @@ async function obtenerProductosSupabase() {
                 error.message
             );
 
+            console.error("Código:", error.code);
+            console.error("Detalles:", error.details);
+
             return {
                 correcto: false,
                 productos: [],
@@ -173,7 +188,10 @@ async function obtenerProductosSupabase() {
             };
         }
 
-        console.log("Productos obtenidos:", data);
+        console.log(
+            "Productos obtenidos correctamente:",
+            data
+        );
 
         return {
             correcto: true,
@@ -195,19 +213,111 @@ async function obtenerProductosSupabase() {
     }
 }
 
+
+// Hacer disponible la función para el Marketplace.
 window.obtenerProductosSupabase = obtenerProductosSupabase;
 
 
 // =========================================================
-// 7. MENSAJE DE INICIALIZACIÓN
+// 6. OBTENER EL USUARIO ACTUAL
+// =========================================================
+
+async function obtenerUsuarioActualSupabase() {
+    try {
+        if (!window.supabaseClient) {
+            throw new Error(
+                "El cliente Supabase no está inicializado."
+            );
+        }
+
+        const { data, error } =
+            await window.supabaseClient.auth.getUser();
+
+        if (error) {
+            console.error(
+                "Error al obtener el usuario:",
+                error.message
+            );
+
+            return null;
+        }
+
+        return data.user;
+
+    } catch (error) {
+        console.error(
+            "Error consultando el usuario:",
+            error.message || error
+        );
+
+        return null;
+    }
+}
+
+window.obtenerUsuarioActualSupabase =
+    obtenerUsuarioActualSupabase;
+
+
+// =========================================================
+// 7. CERRAR SESIÓN
+// =========================================================
+
+async function cerrarSesionSupabase() {
+    try {
+        if (!window.supabaseClient) {
+            throw new Error(
+                "El cliente Supabase no está inicializado."
+            );
+        }
+
+        const { error } =
+            await window.supabaseClient.auth.signOut();
+
+        if (error) {
+            console.error(
+                "Error al cerrar sesión:",
+                error.message
+            );
+
+            return {
+                correcto: false,
+                error: error
+            };
+        }
+
+        console.log("Sesión cerrada correctamente.");
+
+        return {
+            correcto: true,
+            error: null
+        };
+
+    } catch (error) {
+        console.error(
+            "Error al cerrar sesión:",
+            error.message || error
+        );
+
+        return {
+            correcto: false,
+            error: error
+        };
+    }
+}
+
+window.cerrarSesionSupabase = cerrarSesionSupabase;
+
+
+// =========================================================
+// 8. MENSAJE FINAL DE INICIALIZACIÓN
 // =========================================================
 
 if (window.supabaseClient) {
     console.log(
-        "Cliente Supabase inicializado correctamente."
+        "Marketplace UMB: configuración de Supabase cargada."
     );
 } else {
     console.warn(
-        "Cliente Supabase pendiente de configuración."
+        "Marketplace UMB: Supabase aún no está disponible."
     );
 }
