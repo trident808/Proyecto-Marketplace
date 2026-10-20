@@ -2,7 +2,7 @@
 -- =====================================================
 -- MARKETPLACE UMB
 -- Base de datos inicial para Supabase / PostgreSQL
--- =====================================================
+-- ====================================================
 
 create extension if not exists pgcrypto;
 
