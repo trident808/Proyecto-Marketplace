@@ -33,6 +33,7 @@ const SUPABASE_PUBLISHABLE_KEY =
 // 2. VALIDAR CONFIGURACIÓN
 // =========================================================
 
+
 function validarConfiguracionSupabase() {
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
         console.error(
@@ -42,20 +43,20 @@ function validarConfiguracionSupabase() {
     }
 
     if (
-        SUPABASE_URL.includes("https://sispastooqxbzunmglxi.supabase.co") ||
-        SUPABASE_PUBLISHABLE_KEY.includes("sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz")
+        SUPABASE_URL.includes("PEGA_AQUI") ||
+        SUPABASE_PUBLISHABLE_KEY.includes("PEGA_AQUI")
     ) {
         console.error(
-            "[Supabase] Reemplaza los valores de ejemplo " +
-            "por las credenciales reales del proyecto."
+            "[Supabase] Reemplaza las credenciales de ejemplo."
         );
         return false;
     }
 
-    if (!SUPABASE_URL.startsWith("https://sispastooqxbzunmglxi.supabase.co")) {
-        console.error(
-            "[Supabase] La URL del proyecto no es válida."
-        );
+    if (
+        !SUPABASE_URL.startsWith("https://") ||
+        !SUPABASE_URL.endsWith(".supabase.co")
+    ) {
+        console.error("[Supabase] La URL no es válida.");
         return false;
     }
 
@@ -64,8 +65,7 @@ function validarConfiguracionSupabase() {
         SUPABASE_PUBLISHABLE_KEY.includes("service_role")
     ) {
         console.error(
-            "[Supabase] No utilices una clave secreta " +
-            "en el navegador."
+            "[Supabase] No uses una clave secreta en el navegador."
         );
         return false;
     }
@@ -79,23 +79,18 @@ function validarConfiguracionSupabase() {
 // =========================================================
 
 
+
 function inicializarSupabase() {
     console.log("[Supabase] Comprobando inicialización...");
 
     if (!window.supabase) {
-        console.error("La biblioteca de Supabase no está cargada.");
+        console.error(
+            "[Supabase] La biblioteca no está cargada."
+        );
         return null;
     }
 
-    if (
-        !SUPABASE_URL ||
-        !SUPABASE_PUBLISHABLE_KEY ||
-        SUPABASE_URL.includes("https://sispastooqxbzunmglxi.supabase.co") ||
-        SUPABASE_PUBLISHABLE_KEY.includes("sb_publishable_4VsgrjgyXv3-ERWhCadaeQ_1oli4Giz")
-    ) {
-        console.error(
-            "Falta configurar la URL o la clave pública."
-        );
+    if (!validarConfiguracionSupabase()) {
         return null;
     }
 
@@ -112,7 +107,10 @@ function inicializarSupabase() {
             }
         );
 
-        console.log("[Supabase] Cliente creado correctamente.");
+        console.log(
+            "[Supabase] Cliente creado correctamente."
+        );
+
         return cliente;
 
     } catch (error) {
@@ -120,6 +118,7 @@ function inicializarSupabase() {
             "[Supabase] Error al crear el cliente:",
             error
         );
+
         return null;
     }
 }
